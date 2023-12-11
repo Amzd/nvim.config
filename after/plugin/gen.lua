@@ -1,6 +1,6 @@
 require('gen').setup({
     model = "codellama:13b", -- The default model to use.
-    display_mode = "float", -- The display mode. Can be "float" or "split".
+    display_mode = "split", -- The display mode. Can be "float" or "split".
     show_prompt = true, -- Shows the Prompt submitted to Ollama.
     show_model = false, -- Displays which model you are using at the beginning of your chat session.
     no_auto_close = false, -- Never closes the window automatically.
@@ -24,10 +24,10 @@ require('gen').prompts['Fix_Code'] = {
 
 require('gen').prompts['Fix_Err'] = {
     replace = true,
-    extract = "```$filetype\n(.-)\n",
+    extract = "```.-\n(.-)\n",
 }
 
-vim.keymap.set({'v', "n"}, '<leader>sf', function()
+vim.keymap.set({'v', "n"}, '<leader>fix', function()
     local lsp = vim.lsp
     local cursor = vim.fn.getcurpos()
     local line_number = cursor[2] - 1
@@ -38,14 +38,11 @@ vim.keymap.set({'v', "n"}, '<leader>sf', function()
     local line = tostring(line_number)
     local error = diagnostics[1].message
 
-    -- require('gen').prompts['Fix_Err'].prompt = "There is the following error at line " .. line  .. ": " .. diagnostics[1].message
-    --     .. "\n\nIn the following code:" .. "\n\n```$filetype\n" .. filecontents .. "```"
-    --     .. "\n\nIf it is possible to fix by only changing the line with the error return only the changed line"
-    --     .. " in the format: ```$filetype_fix\n...\n``` without any other context, "
-    --     .. "otherwise give a concise description of how to fix the error without giving any triple backtick (`) escaped code blocks."
     require('gen').prompts['Fix_Err'].prompt = "This is my code: \n\n```$filetype\n" .. filecontents .. "```\n\n"
         .. "Tell me the replacement for line " .. line
         .. " that fixes the error \"" .. error
-        .. "\" in format: ```$filetype\n...\n``` without any other text."
+        .. "\" in format: ```$filetype\n...\n``` without any other description."
     vim.cmd("'<,'>Gen Fix_Err")
 end)
+
+vim.keymap.set("n", "<leader>ai", ":Gen Chat<CR>")

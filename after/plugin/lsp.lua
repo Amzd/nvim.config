@@ -2,15 +2,17 @@ local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
 
+require("lspconfig").sourcekit.setup({})
+
 lsp.ensure_installed({
   'tsserver',
   'rust_analyzer',
   'lua_ls',
+  -- 'sourcekit',
 })
 
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
-
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}

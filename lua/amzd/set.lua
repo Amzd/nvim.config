@@ -1,4 +1,4 @@
-vim.opt.guicursor = ""
+-- vim.opt.guicursor = "" -- disables the cursor and makes it just an underscore
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -30,4 +30,4 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "0"
 
-vim.opt.keymodel = "startsel,stopsel"
+vim.opt.keymodel = "startsel,stopsel" -- allows selecting with Shift+Arrows

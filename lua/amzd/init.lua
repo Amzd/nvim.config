@@ -1,6 +1,6 @@
 require("amzd.set")
 require("amzd.remap")
-require("amzd.swift_lsp")
+require("amzd.swift")
 
 local augroup = vim.api.nvim_create_augroup
 local amzdGroup = augroup('amzd', {})

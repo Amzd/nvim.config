@@ -13,13 +13,11 @@ return require('packer').startup(function(use)
         requires = { {'nvim-lua/plenary.nvim'} }
     }
 
-    use({
-        'rose-pine/neovim',
-        as = 'rose-pine',
-        config = function()
-            vim.cmd('colorscheme rose-pine')
-        end
-    })
+    -- ThePrimeagen colorscheme
+    -- use({
+    --     'rose-pine/neovim',
+    --     as = 'rose-pine',
+    -- })
 
     use({
         "folke/trouble.nvim",
@@ -73,9 +71,16 @@ return require('packer').startup(function(use)
     use("folke/zen-mode.nvim")
     --  use("github/copilot.vim")
     use("eandrju/cellular-automaton.nvim")
-    use("laytan/cloak.nvim")
 
     -- amzd
-    use('mg979/vim-visual-multi')
-    use('David-Kunz/gen.nvim')
+    use("arzg/vim-colors-xcode") -- colorscheme
+    use { "mg979/vim-visual-multi", setup = function ()
+        vim.g.VM_default_mappings = 0 -- disables shift arrows starting visual multi mode
+        vim.g.VM_maps = {
+            ["Add Cursor Down"] = "<C-Down>",
+            ["Add Cursor Up"] = "<C-Up>",
+       }
+    end}
+    use("David-Kunz/gen.nvim")
+    use("terrortylor/nvim-comment")
 end)
