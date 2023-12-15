@@ -3,8 +3,9 @@ vim.g.mapleader = " "
 -- editor mappings -
 vim.keymap.set("v", "<C-c>", "y<Esc>i") -- copy
 vim.keymap.set("v", "<C-x>", "d<Esc>i") -- cut
-vim.keymap.set({"", "i"}, "<C-v>", "<Esc>Pv=i") -- paste
-vim.keymap.set("v", "<C-v>", "\"_d<Esc>P=") -- paste
+vim.keymap.set("n", "<C-v>", "vPv=") -- paste n
+vim.keymap.set("i", "<C-v>", "<Esc>Pv=i") -- paste i
+vim.keymap.set("v", "<C-v>", "\"_d<Esc>P=") -- paste v
 vim.keymap.set("i", "<C-z>", "<Esc>ui") -- undo
 vim.keymap.set("", "<C-z>", "<Esc>u") -- undo
 vim.keymap.set("i", "<C-s>", "<Esc>:w<Enter>") -- save
