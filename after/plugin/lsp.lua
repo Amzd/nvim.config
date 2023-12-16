@@ -29,7 +29,6 @@ require('mason-lspconfig').setup({
 
 local cmp = require('cmp')
 local cmp_action = lsp_zero.cmp_action()
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
 
 cmp.setup({
     preselect = 'item',
@@ -75,5 +74,3 @@ lsp_zero.setup()
 vim.diagnostic.config({
     virtual_text = true
 })
-
-
