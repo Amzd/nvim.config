@@ -9,6 +9,11 @@ function ColorMyPencils(color)
     -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
     -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
+    vim.api.nvim_set_hl(0, "MatchParen", {
+        bg = "#43454b",
+        -- underline = true,
+    }) -- fixes matching parens being blue in default
+
     -- Visual Multi cursor colors
     vim.g.VM_Mono_hl = "CursorLine"
     vim.g.VM_Extend_hl = "CursorLine"
