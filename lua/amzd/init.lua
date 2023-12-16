@@ -3,17 +3,16 @@ require("amzd.remap")
 require("amzd.swift")
 
 local augroup = vim.api.nvim_create_augroup
-local amzdGroup = augroup('amzd', {})
-
 local autocmd = vim.api.nvim_create_autocmd
-local yank_group = augroup('HighlightYank', {})
 
+-- helper to reload a lua module
 function R(name)
     require("plenary.reload").reload_module(name)
 end
 
+-- highlights the yanked text for 40ms
 autocmd('TextYankPost', {
-    group = yank_group,
+    group = augroup('HighlightYank', {}),
     pattern = '*',
     callback = function()
         vim.highlight.on_yank({
@@ -23,8 +22,9 @@ autocmd('TextYankPost', {
     end,
 })
 
+-- remove white space in file before save
 autocmd({"BufWritePre"}, {
-    group = amzdGroup,
+    group = augroup('amzd', {}),
     pattern = "*",
     command = [[%s/\s\+$//e]],
 })
