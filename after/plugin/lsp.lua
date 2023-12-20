@@ -37,8 +37,9 @@ cmp.setup({
     },
     mapping = cmp.mapping.preset.insert({
         ['<CR>'] = cmp.mapping.confirm({select = true}),
-        ['<C-f>'] = cmp_action.luasnip_jump_forward(),
-        ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+        ['<C-F>'] = cmp.mapping.complete(),
+        ['<Tab>'] = cmp_action.luasnip_jump_forward(),
+        ['<S-Tab>'] = cmp_action.luasnip_jump_backward(),
         ['<C-u>'] = cmp.mapping.scroll_docs(-4),
         ['<C-d>'] = cmp.mapping.scroll_docs(4),
     })
@@ -66,7 +67,7 @@ lsp_zero.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
   vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
   vim.keymap.set("n", "<F2>", function() vim.lsp.buf.rename() end, opts)
-  vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+  vim.keymap.set("n", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
 lsp_zero.setup()

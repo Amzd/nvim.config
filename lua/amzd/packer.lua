@@ -44,7 +44,22 @@ return require('packer').startup(function(use)
     use("mbbill/undotree")
     use("tpope/vim-fugitive")
     use("nvim-treesitter/nvim-treesitter-context");
+    use("folke/zen-mode.nvim")
+    --  use("github/copilot.vim")
+    use("eandrju/cellular-automaton.nvim")
 
+    -- amzd
+    use("arzg/vim-colors-xcode") -- colorscheme
+    use { "mg979/vim-visual-multi", setup = function ()
+        vim.g.VM_default_mappings = 0 -- disables shift arrows starting visual multi mode
+        vim.g.VM_maps = {
+            ["Add Cursor Down"] = "<C-Down>",
+            ["Add Cursor Up"] = "<C-Up>",
+        }
+    end}
+    use("David-Kunz/gen.nvim")
+    use("terrortylor/nvim-comment")
+    use("jerrymarino/SwiftPlayground.vim")
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v3.x',
@@ -70,19 +85,4 @@ return require('packer').startup(function(use)
         }
     }
 
-    use("folke/zen-mode.nvim")
-    --  use("github/copilot.vim")
-    use("eandrju/cellular-automaton.nvim")
-
-    -- amzd
-    use("arzg/vim-colors-xcode") -- colorscheme
-    use { "mg979/vim-visual-multi", setup = function ()
-        vim.g.VM_default_mappings = 0 -- disables shift arrows starting visual multi mode
-        vim.g.VM_maps = {
-            ["Add Cursor Down"] = "<C-Down>",
-            ["Add Cursor Up"] = "<C-Up>",
-       }
-    end}
-    use("David-Kunz/gen.nvim")
-    use("terrortylor/nvim-comment")
 end)
