@@ -59,7 +59,7 @@ return require('packer').startup(function(use)
     end}
     use("David-Kunz/gen.nvim")
     use("terrortylor/nvim-comment")
-    use("jerrymarino/SwiftPlayground.vim")
+    -- use("jerrymarino/SwiftPlayground.vim") -- broken
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v3.x',
@@ -84,5 +84,6 @@ return require('packer').startup(function(use)
             {'rafamadriz/friendly-snippets'},
         }
     }
+    use("folke/neodev.nvim") -- autocomplete for vim.api stuff
 
 end)
