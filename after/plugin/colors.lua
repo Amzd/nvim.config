@@ -1,18 +1,14 @@
--- require('rose-pine').setup({
---     disable_background = true
--- })
-
 function ColorMyPencils(color)
     color = color or "xcodedarkhc"
     vim.cmd.colorscheme(color)
 
-    -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-    -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    -- remove backround
+    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
 
-    vim.api.nvim_set_hl(0, "MatchParen", {
-        bg = "#43454b",
-        -- underline = true,
-    }) -- fixes matching parens being blue in default
+    -- fix matching parens being blue in xcodedarkhc
+    vim.api.nvim_set_hl(0, "MatchParen", { bg = "#43454b" })
 
     -- Visual Multi cursor colors
     vim.g.VM_Mono_hl = "CursorLine"
