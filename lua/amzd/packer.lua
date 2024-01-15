@@ -13,12 +13,6 @@ return require('packer').startup(function(use)
         requires = { {'nvim-lua/plenary.nvim'} }
     }
 
-    -- ThePrimeagen colorscheme
-    -- use({
-    --     'rose-pine/neovim',
-    --     as = 'rose-pine',
-    -- })
-
     use({
         "folke/trouble.nvim",
         config = function()
@@ -85,5 +79,14 @@ return require('packer').startup(function(use)
         }
     }
     use("folke/neodev.nvim") -- autocomplete for vim.api stuff
+    -- displays keybindings for commands
+    use {
+        "folke/which-key.nvim",
+        config = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+            require("which-key").setup()
+        end
+    }
 
 end)

@@ -1,14 +1,20 @@
+-- `vim.` autocomplete (needs to be setup before lspconfig)
+require("neodev").setup()
+
 local lsp_zero = require("lsp-zero")
 
 lsp_zero.preset("recommended")
 
-require("lspconfig").sourcekit.setup({})
+require("lspconfig").sourcekit.setup({
+    on_init = function (client)
+    end
+})
 require("lspconfig").pylsp.setup({})
 require('lspconfig').lua_ls.setup({
     settings = {
         Lua = {
-            diagnostics = {
-                globals = { "vim" },
+            completion = {
+                callSnippet = "Replace",
             },
         },
     },
