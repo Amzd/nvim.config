@@ -6,3 +6,16 @@ vim.keymap.set('n', '<C-F>', function()
 end)
 vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
 
+-- remap the git_files for home directory to use dotfiles dir
+local homedirmaps = vim.api.nvim_create_augroup('HomeDirMaps', { clear = true })
+vim.api.nvim_create_autocmd('VimEnter', {
+    group = homedirmaps,
+    pattern = '*',
+    callback = function()
+        if vim.fn.getcwd() == vim.fn.expand('~') then
+            vim.keymap.set('n', '<C-p>', function() builtin.find_files {
+                find_command = { "git", "--git-dir=" .. os.getenv("HOME") .. "/dev/dotfiles", "ls-tree", "-r", "HEAD", "--name-only" }
+            } end)
+        end
+    end
+})
