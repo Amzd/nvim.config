@@ -78,7 +78,8 @@ return require('packer').startup(function(use)
             {'rafamadriz/friendly-snippets'},
         }
     }
-    use("folke/neodev.nvim") -- autocomplete for vim.api stuff
+    -- autocomplete for vim.api stuff
+    use("folke/neodev.nvim")
     -- displays keybindings for commands
     use {
         "folke/which-key.nvim",
