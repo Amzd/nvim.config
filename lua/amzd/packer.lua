@@ -38,8 +38,6 @@ return require('packer').startup(function(use)
     use("mbbill/undotree")
     use("tpope/vim-fugitive")
     use("nvim-treesitter/nvim-treesitter-context");
-    use("folke/zen-mode.nvim")
-    --  use("github/copilot.vim")
     use("eandrju/cellular-automaton.nvim")
 
     -- amzd
