@@ -28,6 +28,12 @@ vim.keymap.set("x", "[", "s[]<Esc>hpa", { desc = "Wrap selection in []" })
 vim.keymap.set("x", "{", "s{}<Esc>hpa", { desc = "Wrap selection in {}" })
 vim.keymap.set("x", "(", "s()<Esc>hpa", { desc = "Wrap selection in ()" })
 
+-- place completing <[{( (Now done by autopairs)
+-- vim.keymap.set("i", "<", "<><Esc>i", { desc = "Complete the character pair" })
+-- vim.keymap.set("i", "[", "[]<Esc>i", { desc = "Complete the character pair" })
+-- vim.keymap.set("i", "{", "{}<Esc>i", { desc = "Complete the character pair" })
+-- vim.keymap.set("i", "(", "()<Esc>i", { desc = "Complete the character pair" })
+
 -- movement
 vim.keymap.set("n", "<C-k>", "<cmd>lua vim.diagnostic.goto_next()<CR>zz", { desc = "Go to prev error" })
 vim.keymap.set("n", "<C-j>", "<cmd>lua vim.diagnostic.goto_prev()<CR>zz", { desc = "Go to next error" })
