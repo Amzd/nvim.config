@@ -1,3 +1,14 @@
+require("telescope").setup({
+    defaults = {
+        mappings = {
+            i = {
+                ["<Esc>"] = "close", -- Esc once to close telescope
+                ["<C-c>"] = false, -- C-c to exit insert mode to navigate with hjkl
+            },
+        },
+    }
+})
+
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<C-O>', builtin.find_files, {})
 vim.keymap.set('n', '<C-p>', builtin.git_files, {})
