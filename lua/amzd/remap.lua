@@ -1,20 +1,21 @@
 vim.g.mapleader = " "
 
 -- editor mappings -
-vim.keymap.set({"i", "n"}, "<C-a>", "<Esc>ggVG", { desc =  "Select all" })
-vim.keymap.set("v", "<C-c>", "y<Esc>i",          { desc =  "Copy" })
-vim.keymap.set("v", "<C-x>", "d<Esc>i",          { desc =  "Cut" })
-vim.keymap.set("n", "<C-v>", "pv=",              { desc =  "Paste n" })
-vim.keymap.set("i", "<C-v>", "<Esc>pv=a",        { desc =  "Paste i" })
-vim.keymap.set("v", "<C-v>", "\"_d<Esc>p=",      { desc =  "Paste v" })
-vim.keymap.set("i", "<C-z>", "<Esc>ui",          { desc =  "Undo" })
-vim.keymap.set("", "<C-z>", "<Esc>u",            { desc =  "Undo" })
-vim.keymap.set("i", "<C-s>", "<Esc><Esc>:w<CR>", { desc =  "Save" })
-vim.keymap.set("n", "<C-s>", "<Esc>:w<Enter>",   { desc =  "Save" })
-vim.keymap.set("v", "<Backspace>", "\"_s",       { desc =  "Start editing when selecting and using Backspace" })
-vim.keymap.set("n", "<Backspace>", "\"_s",       { desc =  "Start editing when selecting and using Backspace" })
-vim.keymap.set("i", "<C-H>", "<Esc>vbd<Esc>i",   { desc =  "Delete until beginning of word (d^ would be to next whitespace)" }) -- C-H == C-Backspace (https://old.reddit.com/r/neovim/comments/okbag3/how_can_i_remap_ctrl_backspace_to_delete_a_word/h5999bi/)
-vim.keymap.set("n", "<C-q>", "<C-w>q",           { desc =  "Close window" })
+vim.keymap.set({ "i", "n" }, "<C-a>", "<Esc>ggVG", { desc = "Select all" })
+vim.keymap.set("v", "<C-c>", "y<Esc>i", { desc = "Copy" })
+vim.keymap.set("v", "<C-x>", "d<Esc>i", { desc = "Cut" })
+vim.keymap.set("n", "<C-v>", "pv=", { desc = "Paste n" })
+vim.keymap.set("i", "<C-v>", "<Esc>pv=a", { desc = "Paste i" })
+vim.keymap.set("v", "<C-v>", "\"_d<Esc>p=", { desc = "Paste v" })
+vim.keymap.set("i", "<C-z>", "<Esc>ui", { desc = "Undo" })
+vim.keymap.set("", "<C-z>", "<Esc>u", { desc = "Undo" })
+vim.keymap.set("i", "<C-s>", "<Esc><Esc>:w<CR>", { desc = "Save" })
+vim.keymap.set("n", "<C-s>", "<Esc>:w<Enter>", { desc = "Save" })
+vim.keymap.set("v", "<Backspace>", "\"_s", { desc = "Start editing when selecting and using Backspace" })
+vim.keymap.set("n", "<Backspace>", "\"_s", { desc = "Start editing when selecting and using Backspace" })
+vim.keymap.set("i", "<C-H>", "<Esc>vbd<Esc>i",
+    { desc = "Delete until beginning of word (d^ would be to next whitespace)" })                                               -- C-H == C-Backspace (https://old.reddit.com/r/neovim/comments/okbag3/how_can_i_remap_ctrl_backspace_to_delete_a_word/h5999bi/)
+vim.keymap.set("n", "<C-q>", "<C-w>q", { desc = "Close window" })
 
 -- correct selection behaviour when in insert mode
 -- - goes into (insert) Visual mode
@@ -56,7 +57,7 @@ vim.keymap.set("n", "N", "Nzzzv", { desc = "Center on prev search occurrence" })
 
 -- de-yank
 vim.keymap.set("x", "p", "\"_dP", { desc = "Replace selected text without yanking" })
-vim.keymap.set("x", "yp", "p",    { desc = "Replace selected text and yank" })
+vim.keymap.set("x", "yp", "p", { desc = "Replace selected text and yank" })
 local deletekeys = {
     d = "Delete Text",
     D = "Delete Rest of Line",
@@ -68,8 +69,8 @@ local deletekeys = {
     S = "Substitute Rest of Line",
 }
 for key, desc in pairs(deletekeys) do
-    vim.keymap.set({"n", "x"}, key, "\"_" .. key, { desc = desc .. " without yanking" })
-    vim.keymap.set({"n", "x"}, "y" .. key, key,   { desc = desc .. " and yank" })
+    vim.keymap.set({ "n", "x" }, key, "\"_" .. key, { desc = desc .. " without yanking" })
+    vim.keymap.set({ "n", "x" }, "y" .. key, key, { desc = desc .. " and yank" })
 end
 
 -- theprimeagen
