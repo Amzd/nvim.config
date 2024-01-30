@@ -1,0 +1,21 @@
+require("cmp_ai.config").setup({
+  max_lines = 100,
+  provider = 'Ollama',
+  provider_options = {
+    model = 'codellama:13b',
+  },
+  notify = true,
+  notify_callback = function(msg)
+    vim.notify(msg)
+  end,
+  run_on_every_keystroke = true,
+  ignored_file_types = {
+    -- default is not to ignore
+    -- uncomment to ignore in lua:
+    -- lua = true
+  },
+})
+
+local function filepath()
+    return
+end

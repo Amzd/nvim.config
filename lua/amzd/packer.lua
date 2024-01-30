@@ -10,7 +10,7 @@ return require('packer').startup(function(use)
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.4',
         -- or                            , branch = '0.1.x',
-        requires = { {'nvim-lua/plenary.nvim'} }
+        requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
     use({
@@ -33,51 +33,56 @@ return require('packer').startup(function(use)
         end,
     }
     use("nvim-treesitter/playground")
-    use("theprimeagen/harpoon")
     use("theprimeagen/refactoring.nvim")
     use("mbbill/undotree")
-    use("tpope/vim-fugitive")
+    -- use("tpope/vim-fugitive") -- git
     use("nvim-treesitter/nvim-treesitter-context");
-    use("eandrju/cellular-automaton.nvim")
+    use("eandrju/cellular-automaton.nvim") -- <leader>fml
 
     -- amzd
-    use("arzg/vim-colors-xcode") -- colorscheme
-    use { "mg979/vim-visual-multi", setup = function ()
+    use("nvim-lualine/lualine.nvim")
+    use("arzg/vim-colors-xcode")      -- colorscheme
+    use { "mg979/vim-visual-multi", setup = function()
         vim.g.VM_default_mappings = 0 -- disables shift arrows starting visual multi mode
         vim.g.VM_maps = {
             ["Add Cursor Down"] = "<C-Down>",
             ["Add Cursor Up"] = "<C-Up>",
         }
-    end}
-    use("David-Kunz/gen.nvim")
+    end }
+    use("David-Kunz/gen.nvim") -- AI
     use("terrortylor/nvim-comment")
+
     -- use("jerrymarino/SwiftPlayground.vim") -- broken
+    -- Mason helps updating installed LSP servers through :Mason command.
+    -- This isn't needed for SourceKit-LSP because it is bundled with swift
+    use { 'williamboman/mason.nvim' }
+    use { 'williamboman/mason-lspconfig.nvim' }
+
+    -- This does not currently work with ollama
+    use { "gnanakeethan/llm.nvim" }
+    -- use { "tzachar/cmp-ai" , requires = { "nvim-lua/plenary.nvim" }}
+
+    -- LSP Support
+    use { 'neovim/nvim-lspconfig' }
+
+    -- Autocompletion
+    use { 'hrsh7th/nvim-cmp' }
+    -- Autocompletion sources (added in cmp.setup)
+    use { 'hrsh7th/cmp-nvim-lsp' }
+    use { 'hrsh7th/cmp-nvim-lua' }
+    use { 'saadparwaiz1/cmp_luasnip' }
+    use { 'hrsh7th/cmp-buffer' }
+    use { 'hrsh7th/cmp-path' }
+
+    -- Snippets
+    use { 'L3MON4D3/LuaSnip' }
+    use { 'rafamadriz/friendly-snippets' }
+
     use {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v3.x',
-        requires = {
-            -- LSP server management from neovim
-            {'williamboman/mason.nvim'},
-            {'williamboman/mason-lspconfig.nvim'},
-
-            -- LSP Support
-            {'neovim/nvim-lspconfig'},
-
-            -- Autocompletion
-            {'hrsh7th/nvim-cmp'},
-            -- {'hrsh7th/cmp-buffer'},
-            -- {'hrsh7th/cmp-path'},
-            -- {'saadparwaiz1/cmp_luasnip'},
-            {'hrsh7th/cmp-nvim-lsp'},
-            -- {'hrsh7th/cmp-nvim-lua'},
-
-            -- Snippets
-            {'L3MON4D3/LuaSnip'},
-            {'rafamadriz/friendly-snippets'},
-        }
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
     }
-    -- autocomplete for vim.api stuff
-    use("folke/neodev.nvim")
+    use { "Yoolayn/nvim-intro" }
     -- displays keybindings for commands
     use {
         "folke/which-key.nvim",
@@ -89,4 +94,25 @@ return require('packer').startup(function(use)
     }
     -- autopairs
     use("windwp/nvim-autopairs")
+    use("ryanoasis/vim-devicons")
+    -- filetree
+    use {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
+            -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+        }
+    }
+    -- dev plugin
+    use {
+        "~/dev/plugins/playground.nvim",
+        config = function()
+            require("playground").setup({
+                fix_lsp = true -- optional argument to turn off the lsp fix
+            })
+        end
+    }
 end)
