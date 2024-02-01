@@ -50,7 +50,7 @@ return require('packer').startup(function(use)
         }
     end }
     use("David-Kunz/gen.nvim") -- AI
-    use("terrortylor/nvim-comment")
+    use("numToStr/Comment.nvim")
 
     -- use("jerrymarino/SwiftPlayground.vim") -- broken
     -- Mason helps updating installed LSP servers through :Mason command.
