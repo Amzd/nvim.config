@@ -35,3 +35,9 @@ vim.opt.colorcolumn = "0"
 vim.opt.keymodel = "startsel,stopsel" -- allows selecting with Shift+Arrows
 
 vim.opt.fillchars:append({eob = " "}) -- removes tildes after last line (end of buffer)
+
+vim.filetype.add {
+    pattern = {
+        [".*/.zshrc.d/functions/.*"] = "sh"
+    }
+}
