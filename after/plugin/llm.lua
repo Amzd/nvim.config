@@ -1,13 +1,8 @@
 require("llm").setup({
-    enable_suggestion_on_files = { -- this is stupid just to disable suggestions in Telescope windows
-        -- "{*}{*Telescope*}\\@<!" -- but idk how to make this work
-        "*.swift",
-        "*.lua",
-        "*.rs",
-        "*.zsh",
-        "*.sh",
-        "*.md",
-        "*/zshrc.d/*",
+    enable_suggestions_on_files = {
+        -- disable suggestions in all Telescope windows by enabling only in:
+        "*.*", -- either has file extension
+        "*/zshrc.d/*", -- or in zshrc.d folder
     },
     lsp = { bin_path = "/home/amzd/.cargo/bin/llm-ls"},
     tokens_to_clear = { "<EOT>" },
@@ -31,4 +26,6 @@ require("llm").setup({
         topP = 0.95,
     }
 })
+
+
 
