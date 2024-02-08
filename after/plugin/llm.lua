@@ -1,4 +1,14 @@
 require("llm").setup({
+    enable_suggestion_on_files = { -- this is stupid just to disable suggestions in Telescope windows
+        -- "{*}{*Telescope*}\\@<!" -- but idk how to make this work
+        "*.swift",
+        "*.lua",
+        "*.rs",
+        "*.zsh",
+        "*.sh",
+        "*.md",
+        "*/zshrc.d/*",
+    },
     lsp = { bin_path = "/home/amzd/.cargo/bin/llm-ls"},
     tokens_to_clear = { "<EOT>" },
     fim = {
@@ -9,7 +19,6 @@ require("llm").setup({
     },
     model = "http://localhost:11434/api/generate",
     context_window = 4096,
-
     tokenizer = {
         repository = "codellama/CodeLlama-7b-hf",
     },
@@ -22,3 +31,4 @@ require("llm").setup({
         topP = 0.95,
     }
 })
+
