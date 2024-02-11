@@ -34,6 +34,9 @@ return {
         require("lualine").setup {
             options = {
                 theme = custom_onedark
+            },
+            sections = {
+                lualine_c = { "buffers" },
             }
         }
 
