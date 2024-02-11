@@ -13,9 +13,12 @@ vim.keymap.set("i", "<C-s>", "<Esc><Esc>:w<CR>", { desc = "Save" })
 vim.keymap.set("n", "<C-s>", "<Esc>:w<Enter>", { desc = "Save" })
 vim.keymap.set("v", "<Backspace>", "\"_s", { desc = "Start editing when selecting and using Backspace" })
 vim.keymap.set("n", "<Backspace>", "\"_s", { desc = "Start editing when selecting and using Backspace" })
-vim.keymap.set("i", "<C-H>", "<Esc>vbd<Esc>i",
-    { desc = "Delete until beginning of word (d^ would be to next whitespace)" })                                               -- C-H == C-Backspace (https://old.reddit.com/r/neovim/comments/okbag3/how_can_i_remap_ctrl_backspace_to_delete_a_word/h5999bi/)
+-- C-H == C-Backspace (https://old.reddit.com/r/neovim/comments/okbag3/how_can_i_remap_ctrl_backspace_to_delete_a_word/h5999bi/)
+vim.keymap.set("i", "<C-H>", "<Esc>vbd<Esc>i", { desc = "Delete until beginning of word (d^ would be to next whitespace)" })
 vim.keymap.set("n", "<C-q>", "<C-w>q", { desc = "Close window" })
+-- go prev buffer, split, next buffer, close buffer. This way you will keep the window/split you had.
+-- (https://old.reddit.com/r/neovim/comments/106f8he/how_to_avoid_closing_vim_after_closing_a_file/j3gwdfm/)
+vim.keymap.set("n", "<C-w>b", "<Cmd>bp|sp|bn|bd<CR>", { desc = "Close buffer" })
 
 -- correct selection behaviour when in insert mode
 -- - goes into (insert) Visual mode
@@ -43,13 +46,7 @@ vim.keymap.set("n", "<C-j>", "<cmd>lua vim.diagnostic.goto_prev()<CR>zz", { desc
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "move selected line(s) down" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "move selected line(s) up" })
 
-vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>") -- de-stress
-vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
-    if vim.fn.expand("%") == "lua/amzd/packer.lua" then
-        vim.cmd("PackerSync")
-    end
-end)
+vim.keymap.set("n", "<leader><leader>", "<Cmd>so<CR>")
 
 -- search
 vim.keymap.set("n", "n", "nzzzv", { desc = "Center on next search occurrence" })
