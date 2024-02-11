@@ -21,6 +21,6 @@ require("lazy").setup {
     },
     change_detection = {
         -- don't notify me every time I save
-        notify = vim.fn.getcwd() ~= vim.fn.expand("~") .. "./config/nvim",
+        notify = vim.fn.getcwd() ~= vim.fn.expand("~") .. "/.config/nvim",
     },
 }
