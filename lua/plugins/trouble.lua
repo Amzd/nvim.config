@@ -9,7 +9,7 @@ return {
         require("trouble.providers").providers["telescope"] = nil
 
         local current_mode
-        vim.keymap.set("n", "<leader>xx", function ()
+        vim.keymap.set("n", "<leader>x", function ()
             local can_switch = true
             local all_providers = require("trouble.providers").providers
 
