@@ -11,10 +11,9 @@ return {
         dir = "~/dev/plugins/dontforgit.nvim",
         config = function()
             local git_command = "git"
-            if vim.fn.getcwd() == vim.fn.expand("~") then
+            local cwd = vim.fn.getcwd()
+            if cwd == vim.fn.expand("~") or cwd == vim.fn.expand("~/.zshrc.d") then
                 git_command = "dot"
-            elseif vim.fn.getcwd() == vim.fn.expand("~/zshrc.d/") then
-                git_command = "cd ~;dot"
             end
 
             require("dontforgit").setup({
