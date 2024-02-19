@@ -33,6 +33,8 @@ return {
                 doSample = true,
                 topP = 0.95,
             },
+            accept_keymap = "<S-Down>",
+            dismiss_keymap = "<S-Up>",
         })
     end
 }
