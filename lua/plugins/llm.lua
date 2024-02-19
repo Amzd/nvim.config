@@ -9,7 +9,7 @@ return {
             },
             lsp = {
                 -- cargo install --rev 16606e5371a1b0582543f03fd8a2666f7bf2580a --git https://github.com/huggingface/llm-ls llm-ls
-                bin_path = "/home/amzd/.cargo/bin/llm-ls",
+                bin_path = vim.fn.expand("~/.cargo/bin/llm-ls"),
             },
             tokens_to_clear = { "<EOT>" },
             fim = {
@@ -21,11 +21,11 @@ return {
             model = "http://localhost:11434/api/generate",
             context_window = 4096,
             tokenizer = {
-                repository = "codellama/CodeLlama-13b-hf",
+                repository = "codellama/CodeLlama-7b-hf",
             },
             adaptor = "ollama",
             request_body = {
-                model = "codellama:13b-code",
+                model = "codellama:7b-code",
             },
             query_params = {
                 maxNewTokens = 60,
