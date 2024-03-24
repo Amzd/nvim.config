@@ -22,11 +22,26 @@ return {
         local default_setup = function()
             local opts = { capabilities = lsp_capabilities }
 
-            require("lspconfig").sourcekit.setup(opts)
+            if os.getenv("iOS") == "1" then
+                local home = vim.fn.expand("~")
+                require("lspconfig").sourcekit.setup {
+                    capabilities = lsp_capabilities,
+                    cmd = {
+                        "sourcekit-lsp",
+                        "-Xcc", "-isysroot", "-Xcc", home .. "/.swiftpm/swift-sdks/darwin.artifactbundle/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk",
+                        "-Xcc", "-target", "-Xcc", "arm64-apple-ios15",
+                        "-Xswiftc", "-sdk", "-Xswiftc", home .. "/.swiftpm/swift-sdks/darwin.artifactbundle/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk",
+                        "-Xswiftc", "-target", "-Xswiftc", "arm64-apple-ios15",
+                        "-Xswiftc", "-resource-dir", "-Xswiftc", home .. "/.swiftpm/swift-sdks/darwin.artifactbundle/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift"
+                    }
+                }
+            else
+                require("lspconfig").sourcekit.setup(opts)
+            end
             require("lspconfig").pylsp.setup(opts)
-            require('lspconfig').rust_analyzer.setup(opts)
-            require('lspconfig').bashls.setup(opts)
-            require('lspconfig').lua_ls.setup({
+            require("lspconfig").rust_analyzer.setup(opts)
+            require("lspconfig").bashls.setup(opts)
+            require("lspconfig").lua_ls.setup({
                 capabilities = lsp_capabilities,
                 settings = {
                     Lua = {
