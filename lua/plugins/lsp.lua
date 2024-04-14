@@ -32,7 +32,9 @@ return {
                         "-Xcc", "-target", "-Xcc", "arm64-apple-ios15",
                         "-Xswiftc", "-sdk", "-Xswiftc", home .. "/.swiftpm/swift-sdks/darwin.artifactbundle/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk",
                         "-Xswiftc", "-target", "-Xswiftc", "arm64-apple-ios15",
-                        "-Xswiftc", "-resource-dir", "-Xswiftc", home .. "/.swiftpm/swift-sdks/darwin.artifactbundle/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift"
+                        "-Xswiftc", "-resource-dir", "-Xswiftc", home .. "/.swiftpm/swift-sdks/darwin.artifactbundle/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift",
+                        -- "-Xswiftc", "-I", "-Xswiftc", ".build/debug",
+                        -- "-Xswiftc", "-L", "-Xswiftc", ".build/debug",
                     }
                 }
             else
