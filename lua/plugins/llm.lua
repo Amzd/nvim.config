@@ -1,7 +1,13 @@
 return {
     "gnanakeethan/llm.nvim",
     config = function ()
+        local isOllamaRunning = require("plenary.curl").get("http://localhost:11434", {
+            timeout = 50,
+            on_error = function(e) return { status = e.exit } end,
+        }).status == 200
+
         require("llm").setup({
+            enable_suggestions_on_startup = isOllamaRunning,
             enable_suggestions_on_files = {
                 -- disable suggestions in all Telescope windows by enabling only in:
                 "*.*", -- either has file extension
