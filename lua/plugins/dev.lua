@@ -1,6 +1,7 @@
+-- To switch between local version and git version change the dev block in lazy.lua
 return {
     {
-        dir = "~/dev/plugins/playground.nvim",
+        "amzd/playground.nvim",
         config = function()
             require("playground").setup({
                 fix_lsp = true -- optional argument to turn off the lsp fix
@@ -8,7 +9,7 @@ return {
         end
     },
     {
-        dir = "~/dev/plugins/dontforgit.nvim",
+        "amzd/dontforgit.nvim",
         config = function()
             local git_command = "!git"
             local cwd = vim.fn.getcwd()
