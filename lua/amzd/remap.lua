@@ -19,6 +19,8 @@ vim.keymap.set("n", "<C-q>", "<C-w>q", { desc = "Close window" })
 -- go prev buffer, split, next buffer, close buffer. This way you will keep the window/split you had.
 -- (https://old.reddit.com/r/neovim/comments/106f8he/how_to_avoid_closing_vim_after_closing_a_file/j3gwdfm/)
 vim.keymap.set("n", "<C-w>b", "<Cmd>bp|sp|bn|bd<CR>", { desc = "Close buffer" })
+vim.keymap.set("n", "tl", "<Cmd>bn<CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "th", "<Cmd>bp<CR>", { desc = "Prev buffer" })
 
 -- correct selection behaviour when in insert mode
 -- - goes into (insert) Visual mode
