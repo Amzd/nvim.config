@@ -18,56 +18,49 @@ return {
         'rafamadriz/friendly-snippets',
     },
     config = function ()
-        local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
-        local default_setup = function()
-            local opts = { capabilities = lsp_capabilities }
+        require('mason').setup()
+        require('mason-lspconfig').setup()
 
-            if os.getenv("iOS") == "1" then
-                local home = vim.fn.expand("~")
-                require("lspconfig").sourcekit.setup {
-                    capabilities = lsp_capabilities,
-                    cmd = {
-                        "sourcekit-lsp",
-                        "-Xcc", "-isysroot", "-Xcc", home .. "/.swiftpm/swift-sdks/darwin.artifactbundle/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk",
-                        "-Xcc", "-target", "-Xcc", "arm64-apple-ios15",
-                        "-Xswiftc", "-sdk", "-Xswiftc", home .. "/.swiftpm/swift-sdks/darwin.artifactbundle/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk",
-                        "-Xswiftc", "-target", "-Xswiftc", "arm64-apple-ios15",
-                        "-Xswiftc", "-resource-dir", "-Xswiftc", home .. "/.swiftpm/swift-sdks/darwin.artifactbundle/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift",
-                        -- "-Xswiftc", "-I", "-Xswiftc", ".build/debug",
-                        -- "-Xswiftc", "-L", "-Xswiftc", ".build/debug",
-                    }
-                }
-            else
-                require("lspconfig").sourcekit.setup(opts)
-            end
-            require("lspconfig").pylsp.setup(opts)
-            require("lspconfig").rust_analyzer.setup(opts)
-            require("lspconfig").bashls.setup(opts)
-            require("lspconfig").lua_ls.setup({
+        local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+        local opts = { capabilities = lsp_capabilities }
+
+        if os.getenv("iOS") == "1" then
+            local home = vim.fn.expand("~")
+            require("lspconfig").sourcekit.setup {
                 capabilities = lsp_capabilities,
-                settings = {
-                    Lua = {
-                        completion = {
-                            callSnippet = "Replace",
-                        },
-                        diagnostics = {
-                            globals = { 'vim' },
-                        },
+                cmd = {
+                    "sourcekit-lsp",
+                    "-Xcc", "-isysroot", "-Xcc", home .. "/.swiftpm/swift-sdks/darwin.artifactbundle/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk",
+                    "-Xcc", "-target", "-Xcc", "arm64-apple-ios15",
+                    "-Xswiftc", "-sdk", "-Xswiftc", home .. "/.swiftpm/swift-sdks/darwin.artifactbundle/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk",
+                    "-Xswiftc", "-target", "-Xswiftc", "arm64-apple-ios15",
+                    "-Xswiftc", "-resource-dir", "-Xswiftc", home .. "/.swiftpm/swift-sdks/darwin.artifactbundle/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift",
+                    -- "-Xswiftc", "-I", "-Xswiftc", ".build/debug",
+                    -- "-Xswiftc", "-L", "-Xswiftc", ".build/debug",
+                }
+            }
+        else
+            require("lspconfig").sourcekit.setup(opts)
+        end
+        require("lspconfig").pylsp.setup(opts)
+        require("lspconfig").rust_analyzer.setup(opts)
+        require("lspconfig").bashls.setup(opts)
+        require("lspconfig").lua_ls.setup({
+            capabilities = lsp_capabilities,
+            settings = {
+                Lua = {
+                    completion = {
+                        callSnippet = "Replace",
+                    },
+                    diagnostics = {
+                        globals = { 'vim' },
                     },
                 },
-            })
-        end
-
-        require('mason').setup()
-        require('mason-lspconfig').setup({
-            ensure_installed = {},
-            handlers = {
-                default_setup,
             },
         })
 
-        local cmp = require('cmp')
 
+        local cmp = require('cmp')
         cmp.setup({
             sources = {
                 { name = "nvim_lsp" },
