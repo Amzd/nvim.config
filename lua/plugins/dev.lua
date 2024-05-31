@@ -1,6 +1,12 @@
 -- To switch between local version and git version change the dev block in lazy.lua
 return {
     {
+        "amzd/make_me_less_crazy.nvim",
+        config = function()
+            require("make_me_less_crazy").setup()
+        end
+    },
+    {
         "amzd/playground.nvim",
         config = function()
             require("playground").setup({
@@ -18,6 +24,7 @@ return {
             end
 
             require("dontforgit").setup({
+                notify_git_failed = false,
                 git_command = git_command,
                 prompt_prefix = git_command .. " ",
             })
