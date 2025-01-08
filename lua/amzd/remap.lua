@@ -18,8 +18,8 @@ vim.keymap.set("i", "<C-H>", "<Esc>vbd<Esc>i", { desc = "Delete until beginning 
 vim.keymap.set("n", "<C-q>", "<C-w>q", { desc = "Close window" })
 -- go to prev buffer before closing the buffer. This way you will keep the window/split you had.
 -- (https://stackoverflow.com/a/4468491)
-vim.keymap.set("n", "<C-w>b", "<Cmd>bp|bd #<CR>", { desc = "Close buffer" })
-vim.keymap.set("n", "tq", "<Cmd>bd|bd #<CR>", { desc = "Close buffer" })
+vim.keymap.set("n", "<C-w>b", "<Cmd>bp|bd#<CR>", { desc = "Close buffer" })
+vim.keymap.set("n", "tq", "<Cmd>bp|bd#<CR>", { desc = "Close buffer" })
 vim.keymap.set("n", "tl", "<Cmd>bn<CR>", { desc = "Next buffer" })
 vim.keymap.set("n", "th", "<Cmd>bp<CR>", { desc = "Prev buffer" })
 
