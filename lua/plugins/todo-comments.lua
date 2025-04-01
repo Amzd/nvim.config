@@ -6,9 +6,5 @@ return {
     },
     config = function ()
         require("todo-comments").setup()
-
-        -- Add todo-comments to the list of providers
-        -- This should be done by the plugin imo
-        require("trouble.providers").providers["todo"] = require("trouble.providers.todo")
     end
 }
