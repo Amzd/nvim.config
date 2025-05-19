@@ -23,20 +23,31 @@ return {
         vim.g.VM_Insert_hl = "CursorLine"
 
         -- Colors taken from all around vim-colors-xcode
-        local custom_onedark = require("lualine.themes.onedark")
-        custom_onedark.normal.a.bg = "#cda1ff"
-        custom_onedark.insert.a.bg = "#4ec4e6"
-        custom_onedark.visual.a.bg = "#ff85b8"
-        custom_onedark.command.a.bg = "#ff8a7a"
-        custom_onedark.replace.a.bg = "#e5cfff"
-        custom_onedark.terminal.a.bg = "#e5cfff"
+        local custom_theme = require("lualine.themes.onedark")
+        custom_theme.normal.a.bg = "#cda1ff"
+        custom_theme.insert.a.bg = "#4ec4e6"
+        custom_theme.visual.a.bg = "#ff85b8"
+        custom_theme.command.a.bg = "#ff8a7a"
+        custom_theme.replace.a.bg = "#e5cfff"
+        custom_theme.terminal.a.bg = "#e5cfff"
+        custom_theme.normal.c.fg = "#FFF"
 
         require("lualine").setup {
             options = {
-                theme = custom_onedark
+                component_separators = { left = "", right = ""},
+                theme = custom_theme
             },
             sections = {
-                lualine_c = { "buffers" },
+                lualine_b = { "branch" },
+                lualine_c = {{
+                    "buffers",
+                    symbols = {
+                        -- https://stackoverflow.com/questions/5182852/in-vim-what-is-the-alternate-file
+                        -- maybe enable again if I start using alternate files more often
+                        alternate_file = "",
+                    }
+                }},
+                lualine_x = { "diff" },
             }
         }
 
