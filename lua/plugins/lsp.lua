@@ -58,6 +58,14 @@ return {
                 },
             },
         })
+        require("lspconfig").r_language_server.setup({
+            capabilities = lsp_capabilities,
+            settings = {
+                diagnostics = {
+                    disable = { 'assignment_linter' },
+                },
+            },
+        })
 
 
         local cmp = require('cmp')
