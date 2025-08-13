@@ -42,6 +42,8 @@ return {
         else
             require("lspconfig").sourcekit.setup(opts)
         end
+        require("lspconfig").ts_ls.setup(opts)
+        require("lspconfig").eslint.setup(opts)
         require("lspconfig").pylsp.setup(opts)
         require("lspconfig").rust_analyzer.setup(opts)
         require("lspconfig").bashls.setup(opts)
@@ -53,7 +55,7 @@ return {
                         callSnippet = "Replace",
                     },
                     diagnostics = {
-                        globals = { 'vim' },
+                        globals = { "vim" },
                     },
                 },
             },
