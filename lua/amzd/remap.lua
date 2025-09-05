@@ -47,8 +47,8 @@ vim.keymap.set("x", "(", "s()<Esc>hpa", { desc = "Wrap selection in ()" })
 -- vim.keymap.set("i", "(", "()<Esc>i", { desc = "Complete the character pair" })
 
 -- movement
-vim.keymap.set("n", "<C-k>", "<cmd>lua vim.diagnostic.goto_next()<CR>zz", { desc = "Go to prev error" })
-vim.keymap.set("n", "<C-j>", "<cmd>lua vim.diagnostic.goto_prev()<CR>zz", { desc = "Go to next error" })
+vim.keymap.set("n", "<C-k>", "<cmd>lua vim.diagnostic.goto_prev()<CR>zz", { desc = "Go to next error" })
+vim.keymap.set("n", "<C-j>", "<cmd>lua vim.diagnostic.goto_next()<CR>zz", { desc = "Go to prev error" })
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "move selected line(s) down" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "move selected line(s) up" })
 
