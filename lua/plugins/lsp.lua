@@ -17,7 +17,7 @@ return {
         'L3MON4D3/LuaSnip',
         'rafamadriz/friendly-snippets',
     },
-    config = function ()
+    config = function()
         require('mason').setup()
         require('mason-lspconfig').setup()
 
@@ -133,7 +133,14 @@ return {
         vim.keymap.set({ "i", "s" }, "<C-K>", function() ls.jump(-1) end, { silent = true })
 
         vim.diagnostic.config({
-            virtual_text = true
+            virtual_text = {
+                format = function(diagnostic)
+                    if diagnostic.code == 7028 and diagnostic.source == "typescript" then
+                        return nil -- hide "Unused label" for strudel
+                    end
+                    return diagnostic.message
+                end
+            }
         })
     end
 }
