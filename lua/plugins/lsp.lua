@@ -60,6 +60,8 @@ return {
                 },
             },
         })
+        -- Initial install requires:
+        -- Rscript -e 'install.packages("languageserver", repos="https://cloud.r-project.org")'
         require("lspconfig").r_language_server.setup({
             capabilities = lsp_capabilities,
             settings = {
